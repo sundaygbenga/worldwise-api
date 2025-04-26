@@ -1,4 +1,5 @@
 import {
+	signInTemplate,
 	signUpTemplate,
 	subscriptionReminderTemplate,
 	subscriptionTemplate,
@@ -28,9 +29,13 @@ export const emailTemplates = [
 	},
 	{
 		label: "User Registration",
-		generateSubject: (data) =>
-			`${data.userName}'s  Account Created Successfully`,
+		generateSubject: (data) => `Account Created Successfully @${data.userName}`,
 		generateBody: (data) => signUpTemplate({ ...data }),
+	},
+	{
+		label: "User Login",
+		generateSubject: (data) => `  Account Login Successful @${data.userName}`,
+		generateBody: (data) => signInTemplate({ ...data }),
 	},
 	{
 		label: "Created Subscription",
