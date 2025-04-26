@@ -12,6 +12,7 @@ import authRouter from "./routes/auth.routes.js";
 import userRouter from "./routes/user.routes.js";
 import subsRouter from "./routes/subscription.routes.js";
 import cityRouter from "./routes/city.routes.js";
+import workflowRouter from "./routes/workflow.routes.js";
 
 //  MIDDLEWARES
 import errorMiddleware from "./middlewares/error.middleware.js";
@@ -52,6 +53,7 @@ app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/subscription", subsRouter);
 app.use("/api/v1/cities", cityRouter);
+app.use("/api/v1/workflows", workflowRouter);
 
 app.use(errorMiddleware);
 

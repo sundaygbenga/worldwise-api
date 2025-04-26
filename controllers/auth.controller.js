@@ -11,6 +11,7 @@ import {
 	JWT_SECRET,
 	NODE_ENV,
 } from "../config/env.js";
+import { sendActivationEmail } from "../utils/send-email.js";
 const saltRounds = 10;
 
 export const signUp = async (req, res, next) => {
@@ -56,6 +57,12 @@ export const signUp = async (req, res, next) => {
 			{ expiresIn: JWT_REFRESH_EXPIRES_IN }
 		);
 
+		console.log("NEW USERS:", newUsers[0]);
+		await sendActivationEmail({
+			to: newUsers[0].email,
+			type: "User Registration",
+			user: newUsers[0],
+		});
 		await session.commitTransaction();
 		session.endSession();
 

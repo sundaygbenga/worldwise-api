@@ -98,5 +98,10 @@ subsSchema.pre("save", function (next) {
 	next();
 });
 
+subsSchema.pre(/^find/, function (next) {
+	this.populate("user", "_id name email");
+	next();
+});
+
 const Subscription = mongoose.model("Subscription", subsSchema);
 export default Subscription;

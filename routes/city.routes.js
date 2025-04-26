@@ -17,7 +17,7 @@ cityRouter.get("/", getAllCities);
 
 cityRouter.get("/:id", getCityById);
 
-cityRouter.get("/:id", authorize, getUserCity);
+cityRouter.get("/user/:id", authorize, getUserCity);
 
 cityRouter.put("/:id", authorize, updateCity);
 

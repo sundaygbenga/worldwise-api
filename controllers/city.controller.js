@@ -29,6 +29,7 @@ export const getAllCities = async (req, res, next) => {
 		next(error);
 	}
 };
+
 export const getCityById = async (req, res, next) => {
 	try {
 		const city = await City.findById(req.params.id);
