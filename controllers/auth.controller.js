@@ -146,6 +146,23 @@ export const signIn = async (req, res, next) => {
 		next(error);
 	}
 };
+export const getCurrentUser = async (req, res, next) => {
+	try {
+		if (!req.user) {
+			const error = new Error("User not authenticated");
+			error.statusCode = 401;
+			throw error;
+		}
+
+		res.status(200).json({
+			success: true,
+			message: "Authenticated user fetched successfully",
+			user: req.user,
+		});
+	} catch (error) {
+		next(error);
+	}
+};
 
 export const refreshAccessToken = (req, res, next) => {
 	try {
